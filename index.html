@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Pop-up-windows-with-basic-css-and-jquery - Demonstration</title>
+        <script type="text/javascript" src="../scripts/jquery-1.7.1.min.js"></script>
+        <style>
+            body
+            {
+                margin: 0;
+                padding: 0;
+            }
+            #wrapper
+            {
+                width: 99%;
+                height: 99%;
+            }
+            #popup
+            {
+                display: none;
+                width: 30%;
+                height: auto;
+                overflow: auto;
+                left: 35%;
+                top: 20%;
+                position: absolute;
+                z-index: 2000;
+                border: 2px dashed #d57111;
+                background: #f9f9f9;
+                padding-bottom: 20px
+            }
+            #main
+            {
+                width: 600px;
+                height: 150px;
+                margin-top: 200px;
+                margin-left: 250px;
+                margin-right: auto;
+                padding: 30px;
+                border: 1px solid #ddd;
+                font-size: 25px;
+                color: #555;
+                line-height: 35px;
+                letter-spacing: 2px;
+                padding-left: 250px;
+            }
+            #main input
+            {
+                width: 350px;
+                height: 50px;
+                background: transparent;
+                border: 1px solid #222;
+                background: deepskyblue;
+                color: #fff;
+                font-size: 20px;
+                line-height: 35px;
+                letter-spacing: 2px;
+            }
+            #main input:hover
+            {
+                cursor: pointer;
+                background: dodgerblue;
+            }
+            #overlay
+            {
+                display: none;
+                width: 100%;
+                height: 1000px;
+                left: 0;
+                top: 0;
+                position: absolute;
+                z-index: 1000;
+                background: #333;
+            }
+            #popup input
+            {
+                float: right;
+                margin-right: 30px;
+                border: none;
+                background: transparent;
+                width: 100px;
+                height: 30px;
+                background: #d57111;
+                color: #fff;
+            }
+            #popup input:hover
+            {
+                cursor: pointer;
+                background: #444;
+            }
+        </style> 
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="popup">
+                <div style="width: auto;height: auto;overflow: auto;background: #f6f6f6;
+                     margin-top: 5%;margin-bottom: 5%;padding: 25px;
+                     font-size: 22px;line-height: 30px">
+                    Click on the button below or anywhere outside my border and I will vanish !
+                    <br />
+                    <br />
+                    <span style="color: #d57111">Only jQuery and CSS</span>
+                </div>
+                <input type="submit" value="CLOSE" id="hidepopup" /> 
+            </div>
+            <div id="overlay"></div>
+            <div id="main">
+                <div style="width:550px;float: left;">
+                <span>This is the basic page view</span>
+                </div>
+                <br />
+                <br />
+                <div style="width:550px;float: left;">
+                <input type="submit" value="Click to view popup window !" id="showpopup"/>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                            $("input#showpopup").click(function(){
+                                $("div#overlay").fadeIn('500');       
+                                $("div#popup").delay('800');
+                                $("div#popup").fadeIn('500');         
+                           });                            
+                        
+                        
+                    $("div#overlay").click(function(){                       
+                                $("div#popup").fadeOut('500');      
+                                $("div#overlay").delay('800');
+                                $("div#overlay").fadeOut('500');   
+                    });
+                    
+                    $("input#hidepopup").click(function(){                       
+                                $("div#popup").fadeOut('500');      
+                                $("div#overlay").delay('800');
+                                $("div#overlay").fadeOut('500');   
+                    });
+                });
+        </script>
+    </body>
+</html>
